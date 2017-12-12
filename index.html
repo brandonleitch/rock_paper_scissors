@@ -11,49 +11,70 @@
   const TIE = 1;
   const WIN = 2;
 
-    function computer_play(){
-      return Math.floor(Math.random() * 3)
+  function game(){
+    for(let i = 0; i < 5; i++){
+      let play = to_int(prompt("Rock, Paper, or Scissors?"));
+      console.log(results(play, computer_play()));
     }
+  }
 
-    function compare(player, computer){
-      if((player + 1) % 3 == computer) {
-        return 0;
-      }
-      else if (player == computer) {
-        return 1;
-      }
-      else {
-        return 2;
-      }
-    }
+  function computer_play(){
+    return Math.floor(Math.random() * 3)
+  }
 
-    function results(player, computer){
-      switch (compare(player, computer)) {
-        case 0:
-          return "You Lose! " + to_string(computer) + " Beats " + to_string(player) + "!";
-          break;
-        case 1:
-          return "It's a tie!";
-          break;
-        case 2:
-          return "You Win! " + to_string(player) + " Beats " + to_string(computer) + "!";
-          break;
-      }
+  function compare(player, computer){
+    if((player + 1) % 3 == computer) {
+      return 0;
     }
+    else if (player == computer) {
+      return 1;
+    }
+    else {
+      return 2;
+    }
+  }
 
-    function to_string(play){
-      switch (play) {
-        case 0:
-          return "Rock"
-          break;
-        case 1:
-          return "Paper"
-          break;
-        case 2:
-          return "Scissors";
-          break;
-      }
+  function results(player, computer){
+    switch (compare(player, computer)) {
+      case 0:
+        return "You Lose! " + to_string(computer) + " Beats " + to_string(player) + "!";
+        break;
+      case 1:
+        return "It's a tie!";
+        break;
+      case 2:
+        return "You Win! " + to_string(player) + " Beats " + to_string(computer) + "!";
+        break;
     }
+  }
+
+  function to_string(play){
+    switch (play) {
+      case 0:
+        return "Rock"
+        break;
+      case 1:
+        return "Paper"
+        break;
+      case 2:
+        return "Scissors";
+        break;
+    }
+  }
+
+  function to_int(str){
+    switch (str.toLowerCase()) {
+      case "rock":
+        return ROCK;
+        break;
+      case "paper":
+        return PAPER;
+        break;
+      case "scissors":
+        return SCISSORS;
+        break;
+    }
+  }
   </script>
 </head>
 </html>
