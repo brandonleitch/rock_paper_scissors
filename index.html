@@ -12,10 +12,19 @@
   const WIN = 2;
 
   function game(){
+    let score = 0;
     for(let i = 0; i < 5; i++){
-      let play = to_int(prompt("Rock, Paper, or Scissors?"));
-      console.log(results(play, computer_play()));
+      let play = -1;
+      while(play == -1) {
+        play = to_int(prompt("Rock, Paper, or Scissors?"));
+      }
+      computer = computer_play();
+      console.log(results(play, computer));
+      if(compare(play, computer) == WIN){
+        score++;
+      }
     }
+    console.log("Final Score: " + score);
   }
 
   function computer_play(){
@@ -73,6 +82,8 @@
       case "scissors":
         return SCISSORS;
         break;
+      default:
+        return -1;
     }
   }
   </script>
